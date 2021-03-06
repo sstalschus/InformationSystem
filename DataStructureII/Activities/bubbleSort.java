@@ -1,28 +1,25 @@
-class selectionSort {
+class bubbleSort {
   public static void main(String[] args) {
     
     int numbers[] = {7, 5, 4, 8, 2, 3, 0};
-    int bigger, indexBigger;
+    int bigger, indexBigger, flag = 0;
 
-    // procurando sempre o índice menor e atribuindo as primeiras posições
-    for (int i = 0; i < numbers.length - 1; i++) {
-        bigger = numbers[i];
-        indexBigger = i;
-        for (int j = i + 1; j < numbers.length; j++){
-            if (numbers[j] > bigger){
-                bigger = numbers[j];
-                indexBigger = j;
-            }
+    while(flag == 0) {
+      indexBigger = 0;
+      for (int i = 0; i < numbers.length; i++) {
+        if(i +2 <= numbers.length && (numbers[i] > numbers[i+1])) {
+          bigger = numbers[i];
+          numbers[i] = numbers[i+1];
+          numbers[i+1] = bigger;
+          indexBigger ++;
         }
-        // array na posição do menor recebe o primeiro
-        // em seguida colocamos o menor em primeiro
-        numbers[indexBigger] = numbers[i];
-        numbers[i] = bigger;
+        if(i == numbers.length -1 && indexBigger == 0 ) {
+          flag = 1;
+        }
+      }
     }
-
-    // print the array
     for(int j = 0; j < numbers.length ; j++){
-       System.out.println(numbers[j]);
+      System.out.println(numbers[j]);
     }
   }
 }
